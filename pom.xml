@@ -7,12 +7,21 @@
     <artifactId>demo-parent</artifactId>
     <version>0.0.1</version>
     <packaging>pom</packaging>
+    <name>demo-parent</name>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.15.RELEASE</version>
     </parent>
 
+    <modules>
+        <module>../demo-admin</module><!-- admin -->
+        <module>../demo-api</module><!-- api -->
+        <module>../demo-job</module><!-- job -->
+        <module>../demo-common</module>
+        <module>../demo-service</module>
+        <module>../demo-domain</module>
+    </modules>
     <properties>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
         <java.version>1.8</java.version>
@@ -49,11 +58,6 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
             <version>1.18.20</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -263,6 +267,17 @@
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
+        <!--  Redis依赖      -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!--  不添加这个依赖会导致RedisTemplate无法注入      -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
